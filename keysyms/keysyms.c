@@ -243,7 +243,7 @@ xcb_key_symbols_get_keycode(xcb_key_symbols_t *syms,
 {
   xcb_keysym_t ks;
   int j, nresult = 0;
-  xcb_keycode_t i, min, max, *result = NULL;
+  xcb_keycode_t i, min, max, *result = NULL, *result_np = NULL;
 
   if(syms)
   {
@@ -258,7 +258,16 @@ xcb_key_symbols_get_keycode(xcb_key_symbols_t *syms,
               if(ks == keysym)
               {
                   nresult++;
-                  result = realloc(result, sizeof(xcb_keycode_t) * (nresult + 1));
+                  result_np = realloc(result,
+                                      sizeof(xcb_keycode_t) * (nresult + 1));
+
+                  if(result_np == NULL)
+                  {
+                      free(result);
+                      return NULL;
+                  }
+
+                  result = result_np;
                   result[nresult - 1] = i;
                   result[nresult] = XCB_NO_SYMBOL;
               }
