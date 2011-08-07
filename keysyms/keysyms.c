@@ -363,7 +363,7 @@ int
 xcb_is_modifier_key (xcb_keysym_t keysym)
 {
   return  (((keysym >= XK_Shift_L)  && (keysym <= XK_Hyper_R)) ||
-	   ((keysym >= XK_ISO_Lock) && (keysym <= XK_ISO_Last_Group_Lock)) ||
+	   ((keysym >= XK_ISO_Lock) && (keysym <= XK_ISO_Level5_Lock)) ||
 	   (keysym == XK_Mode_switch) ||
 	   (keysym == XK_Num_Lock));
 }
