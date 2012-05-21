@@ -13,3 +13,5 @@ ChangeLog:
 dist-hook: ChangeLog INSTALL
 
 SUBDIRS = keysyms
+
+EXTRA_DIST = autogen.sh
