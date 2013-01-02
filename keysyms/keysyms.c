@@ -251,8 +251,8 @@ xcb_key_symbols_get_keycode(xcb_key_symbols_t *syms,
       min = xcb_get_setup(syms->c)->min_keycode;
       max = xcb_get_setup(syms->c)->max_keycode;
 
-      for(j = 0; j < syms->u.reply->keysyms_per_keycode; j++)
-          for(i = min; i && i <= max; i++)
+      for(i = min; i && i <= max; i++)
+          for(j = 0; j < syms->u.reply->keysyms_per_keycode; j++)
           {
               ks = xcb_key_symbols_get_keysym(syms, i, j);
               if(ks == keysym)
@@ -270,6 +270,7 @@ xcb_key_symbols_get_keycode(xcb_key_symbols_t *syms,
                   result = result_np;
                   result[nresult - 1] = i;
                   result[nresult] = XCB_NO_SYMBOL;
+                  break;
               }
           }
   }
