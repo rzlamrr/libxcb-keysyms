@@ -11,5 +11,4 @@ PKG_CHECK_MODULES(XPROTO, xproto >= 7.0.8)
 
 AC_OUTPUT([Makefile
 	keysyms/Makefile keysyms/xcb-keysyms.pc
-	xcb_util_intro
 	])
